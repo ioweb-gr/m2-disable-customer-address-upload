@@ -10,8 +10,12 @@ use Magento\Framework\Controller\ResultInterface;
 
 class UploadPlugin
 {
-    public function __construct(private ResultFactory $resultFactory)
+    /** @var ResultFactory */
+    private $resultFactory;
+
+    public function __construct(ResultFactory $resultFactory)
     {
+        $this->resultFactory = $resultFactory;
     }
 
     public function aroundExecute(Upload $subject, callable $proceed): ResultInterface
