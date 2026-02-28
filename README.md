@@ -1,8 +1,18 @@
-# Ioweb Disable Customer Address Upload
+# Ioweb Disable Customer Address Upload (Magento 2)
 
-Disable the customer address file upload controller in Magento 2 by intercepting
-`Magento\Customer\Controller\Address\File\Upload::execute` and returning a 403
-response.
+Disables the customer address file upload endpoint in Magento 2 by intercepting the controller and returning `403 Forbidden`.
+
+## Module Identity
+
+- Magento module name: `Ioweb_DisableCustomerAddressUpload`
+- Composer package: `ioweb-gr/m2_disablecustomeraddressupload`
+- Module root in this repo: repository root
+
+## What It Does
+
+- Intercepts: `Magento\\Customer\\Controller\\Address\\File\\Upload::execute`
+- Prevents controller execution
+- Returns HTTP `403` with a short error message
 
 ## Requirements
 
@@ -11,37 +21,32 @@ response.
 
 ## Installation
 
-Install via Composer (path or VCS repository):
+### Option A: Composer (recommended)
 
 ```bash
-composer require ioweb/module-disable-customer-address-upload
-```
-
-Then enable the module and update the schema:
-
-```bash
-bin/magento module:enable Ioweb_DisableCustomerAddressUpload
+composer require ioweb-gr/m2_disablecustomeraddressupload
 bin/magento setup:upgrade
 bin/magento cache:flush
 ```
 
-## What it does
+### Option B: Manual (`app/code`)
 
-The module registers an around plugin on:
+1. Copy module to:
+   - `<magento_root>/app/code/Ioweb/DisableCustomerAddressUpload`
+2. Run:
 
-- `Magento\Customer\Controller\Address\File\Upload::execute`
-
-The plugin skips the original controller execution and returns a 403 raw
-response with a short message.
+```bash
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento cache:flush
+```
 
 ## Uninstall
 
 ```bash
 bin/magento module:disable Ioweb_DisableCustomerAddressUpload
+bin/magento setup:upgrade
+bin/magento cache:flush
 ```
 
-Remove the package from Composer if desired:
-
-```bash
-composer remove ioweb/module-disable-customer-address-upload
-```
+Then remove module files (or remove package if installed via Composer).

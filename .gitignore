@@ -1,2 +1,16 @@
+# Editors
 .idea/
-/vendor/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+vendor/
+
+# Local mapping/deploy helpers
+deploy/
+deploy-map/

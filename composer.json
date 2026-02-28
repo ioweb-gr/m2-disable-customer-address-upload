@@ -1,9 +1,11 @@
 {
-  "name": "ioweb/module-disable-customer-address-upload",
+  "name": "ioweb-gr/m2_disablecustomeraddressupload",
   "description": "Disable customer address file upload controller in Magento 2.",
   "type": "magento2-module",
+  "version": "1.0.1",
   "license": "proprietary",
   "require": {
+    "magento/magento-composer-installer": "*",
     "magento/module-customer": "*"
   },
   "autoload": {
@@ -13,5 +15,13 @@
     "psr-4": {
       "Ioweb\\DisableCustomerAddressUpload\\": ""
     }
+  },
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Ioweb/DisableCustomerAddressUpload"
+      ]
+    ]
   }
 }
